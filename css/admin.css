@@ -1,0 +1,39 @@
+/* formulario para agregar o modificar */
+#form-articulos{
+    display: none;
+    position: fixed;
+    top: 110px;
+    z-index: 1000;
+    background: white;
+}
+/* flechas del paginador */
+.flecha{
+    border: 1px solid rgb(143, 140, 140);
+    padding: 0px 10px 14px 10px;
+}
+
+/* botones para las categorias */
+.categoria{
+    cursor: pointer;
+    color: rgb(26, 26, 185);
+}
+.categoria:hover{
+    color: rgb(184, 184, 214);
+}
+#todo{
+    cursor: pointer;
+    color: rgb(26, 26, 185);
+}
+#todo:hover{
+    color: rgb(184, 184, 214);
+}
+
+
+/* posicion de la vista individual de cada pedido */
+#posicion-pedido{
+    position: fixed;
+}
+
+.traer-individual{
+    cursor: pointer;
+}

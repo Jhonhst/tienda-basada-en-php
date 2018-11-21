@@ -1,0 +1,17 @@
+archivos necesarios para el carrito
+
+1- carrito/guardar-carrito.php
+2- carrito/mostrar-carrito.php
+3- carrito/modificar-carrito.php
+4- carrito/eliminar-carrito.php
+5- carrito/boton-actualizado.php
+6- pedidos/guardar-pedido.php
+7- procesos/eliminar-carrito.php
+8- js/carrito.js
+
+archivos donde el carrito tiene parte, es solo para ser mostrado
+
+1- cabecera.php  en la parte de un desplegable
+2- articulo.php este envia el id y la cantidad para ser procesados y retornar los articulos, con todos sus datos.
+3- carrito.php es donde esta el carrito com tal, donde el usuario puede ver y modicar su compra 
+3- resumen.php es cuando el usuario accedio hacer la compra y se le muestra un resúmen de su compra, con el formulario para enviar los datos necesarios para realizar el pedido. 

@@ -1,0 +1,27 @@
+/*inicio cabecera */
+.imagen-central{
+    width: 50%;
+}
+.numero-carrito{
+    font-size: 2rem;
+    /* margin-top: 4px; */
+    margin-right: 50px;
+    color: white;
+    background-color: red;
+    padding: 4px;
+    border-radius: 25%;
+    cursor: pointer;
+}
+.tablilla{
+    display: none;
+}
+.mascss{
+    font-size: 2rem;
+    color: rgb(143, 125, 125);
+}
+.menoscss{
+    font-size: 2rem;
+    color: rgb(143, 125, 125);
+}
+/*inicio cabecera */
+
