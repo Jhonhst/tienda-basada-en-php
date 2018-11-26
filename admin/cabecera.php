@@ -1,7 +1,6 @@
-<?php 
-session_start();
 
-?>
+  <?php if(isset($_COOKIE['admin'])): ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,21 +8,18 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Administrador</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="../css/admin.css">
-  
-    <link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Hind+Vadodara|Rajdhani" rel="stylesheet">   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"> 
     <link rel="stylesheet" href="../librerias/bootstrap/css/bootstrap.min.css">
-
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
     <!-- <link rel="stylesheet" href="librerias/font-awesome/all.css"> -->
 </head>
 <body >
 
     <!--inicio del navbar para el menu -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Administración</a>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-bg bordee">
+        <a class="navbar-brand letra" style="color:white">Administración</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,7 +27,7 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
-              <a class="nav-link" href="index1.php">Articulos<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="articulos.php">Artículos<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="usuarios.php">Usuarios</a>
@@ -42,24 +38,28 @@ session_start();
             <li class="nav-item">
                 <a class="nav-link" href="pedidos-realizados.php">Pedidos realizados</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../index.php">Tienda</a>
+            </li>
           </ul>
           <ul class="navbar-nav ml-auto my-lg-0">
          
          <!-- fin de no registrado -->
          <!-- inicio de registrado -->
-         <?php if(isset($_COOKIE['mail'])): ?>
+       
          <li class="nav-item">
-           <a class="nav-link" href="#">hola <?php echo $_COOKIE['mail'];?></a>
+           <a class="nav-link" href="#">Hola <?php echo $_COOKIE['admin'];?></a>
          </li>
          <li class="nav-item">
            <form >
            <input type="hidden" id="borrar" value="borrar">
-           <buttom type="buttom" id="cerrar-sesion"  class="btn btn-primary mr-2" > Cerrar Sesión</buttom>
+           <a href="cerrar-sesion.php" class="btn btn-primary mr-2" > Cerrar Sesión</a>
            </form>
          </li>
-         <?php endif ?>
+      
          <!-- fin del registrado -->
          </ul>
         </div>
     </nav>
     <!--fin del navbar para el menu -->
+    <?php endif ?>

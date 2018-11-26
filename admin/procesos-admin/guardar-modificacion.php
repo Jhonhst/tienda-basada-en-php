@@ -33,10 +33,10 @@ if( $_FILES['file']['error'] == UPLOAD_ERR_OK )
         $result = mysqli_query($con, $query);
                   
             if($query){
-                echo "Se Modifico correctamente";
+                echo "Se ha Modificado correctamente";
             }
             else {
-                echo "Ocurrio un error";
+                echo "Ocurrió un error";
             }
           
     }
@@ -54,9 +54,9 @@ if( $_FILES['file']['error'] == UPLOAD_ERR_OK )
     $result = mysqli_query($con, $query);
               
         if($query){
-            echo "Se Modifico correctamente";
+            echo "Se ha Modificado correctamente";
         }
         else {
-            echo "Ocurrio un error";
+            echo "Ocurrió un error";
         }
 }

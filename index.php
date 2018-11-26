@@ -34,57 +34,75 @@ $gorra = $gorras->buscar($con,'gorras');
 ?>
 
 <div class="container">
-    <div class="row">
+    <h3 class="mt-4 letra">Relojes</h3>
+    <div class="row bordee ">    
         <?php foreach($reloj as $dato): ?> 
-        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2  ">
             <a href="articulo.php?articulo=<?php echo $dato['an']?>">
-                <img src="img/<?php echo $dato['urlimg'] ?>" class="img-fluid" alt=""><p><?php echo $dato['an'] ?></p>
+                <img src="img/<?php echo $dato['urlimg'] ?>" class="img-fluid" alt="">
+                <p><?php echo $dato['an'] ?></p>
             </a>
+            <p class="color-precio">$ <?php echo $dato['precio'] ?></p>
         </div>
         <?php endforeach ?>
     </div>
 
-    <div class="row">
+    <h3 class="mt-4 letra">Lentes</h3>
+    <div class="row bordee">       
         <?php foreach($lente as $dato): ?> 
-        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2 ">
             <a href="articulo.php?articulo=<?php echo $dato['an']?>">
-                <img src="img/<?php echo $dato['urlimg'] ?>" class="img-fluid" alt=""><p><?php echo $dato['an'] ?></p>
+                <img src="img/<?php echo $dato['urlimg'] ?>" class="img-fluid" alt="">
+                <p><?php echo $dato['an'] ?></p>
             </a>
+            <p class="color-precio">$ <?php echo $dato['precio'] ?></p>          
         </div>
         <?php endforeach ?>
     </div>
 
-    <div class="row">
+    <h3 class="mt-4 letra">Billeteras</h3>
+    <div class="row bordee">
         <?php foreach($billetera as $dato): ?> 
-        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2 ">
             <a href="articulo.php?articulo=<?php echo $dato['an']?>">
-                <img src="img/<?php echo $dato['urlimg'] ?>" class="img-fluid" alt=""><p><?php echo $dato['an'] ?></p>
+                <img src="img/<?php echo $dato['urlimg'] ?>" class="img-fluid" alt="">
+                <p><?php echo $dato['an'] ?></p>
             </a>
+            <p class="color-precio">$ <?php echo $dato['precio'] ?></p>
         </div>
         <?php endforeach ?>
     </div>
 
-    <div class="row">
+    <h3 class="mt-4 letra">Zapatos</h3>
+    <div class="row bordee">
         <?php foreach($zapato as $dato): ?> 
-        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2 ">
             <a href="articulo.php?articulo=<?php echo $dato['an']?>">
-                <img src="img/<?php echo $dato['urlimg'] ?>" class="img-fluid" alt=""><p><?php echo $dato['an'] ?></p>
+                <img src="img/<?php echo $dato['urlimg'] ?>" class="img-fluid" alt="">
+                <p><?php echo $dato['an'] ?></p>
             </a>
+            <p class="color-precio">$ <?php echo $dato['precio'] ?></p>
         </div>
         <?php endforeach ?>
     </div>
 
-    <div class="row">
+    <h3 class="mt-4 letra">Gorras</h3>
+    <div class="row bordee">
         <?php foreach($gorra as $dato): ?> 
-        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2 ">
             <a href="articulo.php?articulo=<?php echo $dato['an']?>">
-                <img src="img/<?php echo $dato['urlimg'] ?>" class="img-fluid" alt=""><p><?php echo $dato['an'] ?></p>
+                <img src="img/<?php echo $dato['urlimg'] ?>" class="img-fluid" alt="">
+                <p><?php echo $dato['an'] ?></p>
             </a>
+            <p class="color-precio">$ <?php echo $dato['precio'] ?></p>
         </div>
         <?php endforeach ?>
     </div>
 </div>
-
+<br>
+<br>
+<br>
+<br>
 <?php 
 include 'footer.php';
 ?>

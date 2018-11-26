@@ -1,13 +1,14 @@
 <?php
     include('cabecera.php');
 ?>
+<?php if(isset($_COOKIE['admin'])): ?>
 <!-- desplegable agregar o modificar -->
 <div class="container">
-    <h3 class="text-center mt-3 mb-3">Usuarios</h3>
-    <table class="table table-dark">
+    <h3 class="text-center mt-3 mb-3" style="color:red">Usuarios</h3>
+    <table class="table table-dark bordee">
         <thead>
             <tr>
-                <th scope="col">id</th>
+                <th scope="col">Id</th>
                 <th scope="col">Nombres</th>
                 <th scope="col">Apellidos</th>
                 <th scope="col">C.C</th>
@@ -32,40 +33,9 @@
     </nav>
       <!-- fin de botones -->
 
- 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 
 <?php
 include('footer.php');
 ?>
    <script src="../js/admin-usuarios.js"></script> 
+   <?php endif ?>

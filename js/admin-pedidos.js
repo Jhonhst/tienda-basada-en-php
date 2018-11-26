@@ -12,7 +12,7 @@ function iniciar(url,tabla){
         // se genera el paginador
          paginador = $(".pagination");
     // cantidad de items por pagina
-        var items = 30, numeros =4;	
+        var items = 10, numeros =4;	
     // inicia el paginador
         init_paginator(paginador,items,numeros);
         // se envia la peticion ajax que se realizara como callback
@@ -66,7 +66,7 @@ function iniciar(url,tabla){
             $('#tablapedidos').html(modulo);
 
         }).fail(function(jqXHR,textStatus,textError){
-        console.log("Error al realizar la peticion dame".textError);
+        console.log("Error al realizar la petición dame".textError);
         });
     }
 
@@ -77,7 +77,7 @@ function iniciar(url,tabla){
             tabla: tabla,
         }
         $.post('precesos-pedidos/traer-individual.php', datos, function (respuesta) {
-            console.log(respuesta);
+            // console.log(respuesta);
             let datos = JSON.parse(respuesta);
             let modulo = ''; 
             datos.forEach(dato => {
@@ -91,7 +91,7 @@ function iniciar(url,tabla){
                     <p>C.C: <strong>${dato.ccpe}</strong></p>
                     <p>Ciudad: <strong>${dato.ciudadpe}</strong></p>
                     <p>Email: <strong>${dato.emailpe}</strong></p>
-                    <p>Metodo de envío: <strong>${dato.enviope}</strong></p>
+                    <p>Método de envío: <strong>${dato.enviope}</strong></p>
                 </div>
                 <div class="col-6">
                     <p>Fecha: <strong>${dato.fechape}</strong></p>
@@ -100,10 +100,10 @@ function iniciar(url,tabla){
                     <p>Dirección: <strong>${dato.direccionpe}</strong></p>
                     <p>País: <strong>${dato.paispe}</strong></p>
                     <p>Teléfono: <strong>${dato.telefonope}</strong></p>           
-                    <p>Metodo de pago: <strong>${dato.pagope}</strong></p>
+                    <p>Método de pago: <strong>${dato.pagope}</strong></p>
                 </div>
                 <div class="col-12">
-                    <p>Resumen: <strong>NO SE</strong></p>
+                    <p>Resumen: <strong>¡..........!</strong></p>
                     <p>Subtotal: <strong>${dato.subtotalpe}</strong></p>
                     <p>Precio de envío: <strong>${dato.precioenviope}</strong></p>
                     <p>Gran Total: <strong>${dato.totalpe}</strong></p>
@@ -111,7 +111,7 @@ function iniciar(url,tabla){
                 `
             })
             $('#pedido').html(modulo);
-
+            $('.boton-enviar').slideDown(300);
         });
     })
 
@@ -134,7 +134,7 @@ function iniciar(url,tabla){
     function retornarId(id){//recibe el id desde traer individual  
         // enviar pedido pendiente a pedido realizado
         $(document).on('click', '#pedido-cancelado', function() {
-            if(confirm('¿Este pedido ya se cancelo? Sera enviado a pedidos realizados')) {
+            if(confirm('¿Este pedido ya se ha cancelado? Será enviado a pedidos realizados')) {
                 // let id = $(this).attr('elId');
                 $.post('precesos-pedidos/pedido-cancelado.php', {id}, function (respuesta) {
                       alert(respuesta);
@@ -144,6 +144,14 @@ function iniciar(url,tabla){
         })
         
     }
+
+        $('#posicion-pedido').scroll(function(){//scroll es el metodo
+            if($(this).scrollTop() > -100){//de esta forma le digo que si al hacer scroll supero los 100px con respcto al top entonces haga lo que sigue 
+                console.log('hola scroll');
+            }else{
+                console.log('no scroll')
+            }
+        });
 
    
 }

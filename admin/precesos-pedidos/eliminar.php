@@ -8,6 +8,6 @@ if(isset($_POST['id'])){
     $tabla =  $_POST['tabla'];
     $consulta = ("DELETE FROM $tabla WHERE id = $id ");
     $ejecuta = mysqli_query($con,$consulta);
-    echo  'Se elimino exitosamente';
+    echo  '¡Se ha eliminado exitosamente!';
 
 }

@@ -14,5 +14,5 @@ if($_POST['borrar']){
     }
 };
 
-echo 'se borro la cookie' ;
+echo 'Se borro la cookie' ;
 ?>

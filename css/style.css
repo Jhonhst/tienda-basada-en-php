@@ -1,7 +1,7 @@
 /*inicio cabecera */
-.imagen-central{
+/* .imagen-central{
     width: 50%;
-}
+} */
 .numero-carrito{
     font-size: 2rem;
     /* margin-top: 4px; */
@@ -23,5 +23,91 @@
     font-size: 2rem;
     color: rgb(143, 125, 125);
 }
-/*inicio cabecera */
+/*fin cabecera */
 
+
+.bordee {
+    width: 100%; 
+    background-size: cover;
+    box-shadow:0 0  20px rgba(7,7,7,.7);    
+}
+
+/* fondo del navbar */
+.bg-navbar{
+    background-color:brown;
+}
+.bg-navbar-uno{
+    background-color:rgb(60, 65, 65);
+}
+
+/* imagenes de forma de pago */
+.img-pago{
+    width: 10%; 
+}
+.imagenes-pago{
+    margin-left: 35%;
+}
+
+/* iconos de redes socialies */
+.iconos{
+    margin-top:10px; 
+    font-size: 2.2rem;
+    color: rgb(40, 185, 149);
+}
+
+.whatsapp:hover{
+    color: rgb(55, 233, 108);
+    background-color: white;
+    border-radius: 30%;
+}
+.facebook:hover{
+    color: rgb(33, 108, 179);
+    background-color: white;
+    border-radius: 30%;
+}
+
+.envelope:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(185, 19, 19);
+    border-radius: 30%;
+}
+
+/* footer */
+.footer{
+    background-color: rgb(60, 65, 65);
+}
+
+/* titulo de los productos del carrito */
+.titulo-carrito{
+    color: red;
+    font-size: 1.3rem;
+    text-align: center;
+
+}
+/* boton de eliminar del carrito como tal */
+.eliminar-del-carrito-style{
+    margin-left: 70%;
+    margin-top: -20px;
+    margin-bottom: 5px;
+}
+
+/* color del precio */
+.color-precio{
+    color: red;
+    text-decoration-color: aqua;
+}
+
+.resumen-vacio{
+    font-size: 2rem;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    margin-left: 20%;
+    color: orange;
+    font-family: 'Oleo Script', cursive;
+}
+
+/* letra */
+.letra{
+    font-family: 'Oleo Script', cursive;
+    font-size: 1.5rem;
+}

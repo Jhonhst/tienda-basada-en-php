@@ -1,0 +1,38 @@
+1- al realizar un pedido se debe descontar en el deposito.
+2- En el administrador en usuarios que salga la cantidad de pedidos realizados y sus detalles.
+3- El buscador tanto para el usuario como para el administrador.
+4- eliminar la imagen al eliminar un registro.
+5- En caso de que no tenga dirección guardada y realiza una compra que se guarde la que coloco al realizar el pedido.
+6- Al mandar el pedido los datos enviados debe ser los menos posibles de la interfaz, tratar de que todo se haga por parte de php ya que el usuario puede modificar datos importantes.
+7- colocar las ciudades y países en el formulario para la dirección.
+8- mejorar las validaciones.
+9- en usuario la opción para modificar usuario y contraseña.
+10- mejorar el titulo que saldrá el buscador, que salga un titulo referente a la página que se esta viendo.
+11- un registro e inicio de sesión más sofisticados.
+12- colocar puntos de los miles en las cantidades.
+13- La opción para los favoritos de los usuarios.
+14- clave doble e incriptadas.
+15- Buscador para el administrador.
+16- al registrar verificar con el email y mandar un correo con la factura al realizar un pedido.
+17- que es -htacces y una página para los errores 404.
+18- en los marcadores tengo una tienda sencilla que muestra un poco de seguridad, debo revisarla para aprender.
+19- usar insigne de mysqli para evitar números negativos en la base de datos.
+
+
+Por seguridad
+
+1- usar prepare el cual es para evitar un poco las inyecciones
+2- Eliminar los errores que retorna mysql cuando se encuentra algún error, para que nadie pueda ver datos de la base de datos.
+3- incriptar las cookies.
+4- si la cantidad se excede al deposito o es menor a uno la página se debe recargar y se borre la sesión el carrito todo.
+5- los datos a enviar a la base de datos deben ser los menos posibles de la interfaz las cuentas sumas y todo eso hacer desde php.
+6- hacer validaciones tanto en javascript como php para evitar inyecciones.
+7- si la cookie que guarda la sesión se modifica que debe borrar enseguida.
+8- revisar que los procesos hechos desde jacascript que tengan que ver con la base de datos sean, muy mínimos.
+9- tener en cuenta también los datos que llegan por GET aunque por POST va la mayoría.
+10- son mejores las cookies de sesión ya que van incriptadas y su estadía es mientras este abierto el navegador.
+11- tener muy en cuenta las inyecciones tanto de php como mysql.
+12- mysqli_real_scape para evitar algunas inyecciones como '' or '1'='1' 
+13- estudiar más sobre la seguridad o verme el curso de udemy de ecommerce y tienda con angular.
+14- en los marcadores tengo una tienda sencilla que muestra un poco de seguridad, debo revisarla para aprender.
+15- usar insigne de mysqli para evitar números negativos en la base de datos.

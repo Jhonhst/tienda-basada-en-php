@@ -1,14 +1,15 @@
 <?php
     include('cabecera.php');
 ?>
+<?php if(isset($_COOKIE['admin'])): ?>
 <!-- pedidos pendientes -->
 <div class="container" onLoad="script a ejecutar">
-    <h3 class="text-center mt-3 mb-3">Pedidos Pendientes</h3>
+    <h3 class="text-center mt-3 mb-3" style="color:red">Pedidos Pendientes</h3>
     <div class="row"> 
         <table class="table table-dark col-4">
             <thead>
                 <tr>
-                    <th scope="col">id - pedido</th>
+                    <th scope="col">Id - pedido</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Usuario</th>
                 </tr>
@@ -18,12 +19,15 @@
             <tbody>
         </table>
         <div class="col-12 col-lg-8 ">
-            <div id="posicion-pedido">
-                <div class="row" id="pedido">
+            <div id="posicion-pedido" class="bordee">
+                <div class="row p-4" id="pedido">
                 
                 </div>
-                <p>¿El pedido ya esta cancelado?</p>
-                <button class="btn btn-success" id="pedido-cancelado">Si</button>
+                <div class="boton-enviar ">
+                    <p class="text-center">¿El pedido ya esta cancelado?
+                        <button class="btn btn-success " id="pedido-cancelado">Si</button>
+                    </p>
+                </div>    
             </div>
           
 
@@ -41,41 +45,9 @@
     </nav>
       <!-- fin de botones -->
 
- 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
 <?php
 include('footer.php');
 ?>
     <script src="../js/admin-pedidos.js"></script> 
    
+    <?php endif ?>

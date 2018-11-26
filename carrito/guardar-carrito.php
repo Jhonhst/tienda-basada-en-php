@@ -29,9 +29,9 @@ if(isset($_POST['id'])){
 			if(isset($_SESSION["producto"][$nuevo_producto['id']])) //si ya existe este id dentro de la variable
 			{
         unset($_SESSION["producto"][$nuevo_producto['id']]);  //si ya existe este id dentro de la variable destruyelo(borrar), esto es para que no se repita.
-        echo 'Ya se Guardo anteriormente';  
+        echo 'Este artículo ya se ha Guardado anteriormente';  
 			}else{
-        echo 'Se añadio ';
+        echo 'Se añadió de manera exitosa';
       }		
 		}
     //$_SESSION["producto"] va a tener un array como primer parametro es el id y de hece id se va a craer como otro array en el cual se a agregar todo lo que venga por $nuevo_producto en este caso y si por ejemplo coloco $nuevo_producto["deposito"] = $deposito tambie se va aguadar despues del id 

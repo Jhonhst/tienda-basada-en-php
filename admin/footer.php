@@ -1,5 +1,8 @@
+<?php if(isset($_COOKIE['admin'])): ?>
 <div>
-        <div style="background:black;">a</div>
+    <div class="footer navbar-bg">
+        <p class="text-center mensaje letra">Unos de los secretos para el éxito es la buena administración</p> 
+    </div>
     </div>
     <!-- inicio de la tabla del pedido -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -12,6 +15,6 @@
     <script src="../librerias/jquery/jquery-3.3.1.min.js"></script>
     <script src="../js/paginator.min.js"></script> 
 
- 
+    <?php endif ?>
 </body>
 </html>

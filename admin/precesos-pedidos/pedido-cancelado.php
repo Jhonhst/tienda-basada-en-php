@@ -48,13 +48,13 @@ if(isset($_POST['id'])){//primero se selccionan los datos a enviar, aqui hay dos
          
         }
 
-        $query = "INSERT INTO pedidospendientes (id,fecha, nombre, apellido, cc, direccion, ciudad, pais, email, telefono, envio, pago, subtotal, precioenvio, total, idcliente) VALUES ('$idpe','$fecha', '$nombrepe', '$apellidope', $ccpe, '$direccionpe', '$ciudadpe', '$paispe', '$emailpe', $telefonope, '$enviope', '$pagope', $subtotalpe, $precioenviope, $totalpe, $idclientepe)";
+        $query = "INSERT INTO pedidosrealizados (id,fecha, nombre, apellido, cc, direccion, ciudad, pais, email, telefono, envio, pago, subtotal, precioenvio, total, idcliente) VALUES ('$idpe','$fecha', '$nombrepe', '$apellidope', $ccpe, '$direccionpe', '$ciudadpe', '$paispe', '$emailpe', $telefonope, '$enviope', '$pagope', $subtotalpe, $precioenviope, $totalpe, $idclientepe)";
 
         $ejecutar_envio=mysqli_query($con,$query);
 
         $consulta_id = ("DELETE FROM pedidos WHERE id = $id ");
         $elimina = mysqli_query($con,$consulta_id);
-        echo  'Se ha ha enviado a pedidos realizados';
+        echo  'EL pedido se ha enviado a pedidos realizados';
 
 
 }

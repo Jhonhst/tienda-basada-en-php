@@ -2,27 +2,33 @@
 include('../conexion/conexion.php');
 
 if($_POST){
-    $correo = $_POST['usuario'];
+    $usuario = $_POST['usuario'];
     $clave = $_POST['clave'];
 
     $sql_leer= 'SELECT * FROM  usuarios';
     $ejecutar=mysqli_query($con,$sql_leer);
-    $resultado=mysqli_fetch_assoc($ejecutar);
-    foreach($ejecutar as $dato){
-      if($dato['nombre'] == $correo && $dato['clave'] == $clave){
 
-        setcookie("mail",$dato['nombre'],time()+(60*60*24*365),"/");
+    while($dato =  mysqli_fetch_assoc($ejecutar)){
+      if($dato['usuario'] == $usuario && $dato['clave'] == $clave){
+
+        setcookie("mail",$dato['usuario'],time()+(60*60*24*365),"/");
         setcookie("id",$dato['id'],time()+(60*60*24*365),"/");
      
-        echo 'bien se inicio este veta';
-        break;
+        echo $error = 1;
+       break;//se detendra cuando encuentre una coincidencia
       }else{
-        echo 'no se inicio esta vaina';
-        break;
+        $error = 0;
       }
+    }
+    
+    if(empty($error)){
+      echo substr($error, -1, 1); //si no encuetra nada entonces que mande un 0 para que ajax retorne un alert negativo
     }
 
 
+
 }
+
+
 
 ?>

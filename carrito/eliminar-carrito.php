@@ -12,7 +12,7 @@ if($_POST['id']){
     if(isset($_SESSION["producto"][$nuevo_producto['id']])) //si ya existe este id dentro de la variable
     {
       unset($_SESSION["producto"][$nuevo_producto['id']]);  //si ya existe este id dentro de la variable destruyelo(borrar), esto es para que no se repita.
-      echo 'Se elimino el articulo';  
+      echo 'Se ha eliminado el articulo';  
     }		
   }
 }

@@ -17,9 +17,9 @@ include('../procesos-admin/conexion.php');
         FROM $tabla  JOIN usuarios  ON pedidos.idcliente=usuarios.id  ORDER BY pedidos.id DESC limit ? offset ?");
 
     }
-    else if($tabla == 'pedidospendientes'){
-        $query = $con->prepare("SELECT pedidospendientes.id as idpe, fecha, usuarios.nombre as nombreus
-        FROM $tabla  JOIN usuarios  ON pedidospendientes.idcliente=usuarios.id  ORDER BY pedidospendientes.id DESC limit ? offset ?");
+    else if($tabla == 'pedidosrealizados'){
+        $query = $con->prepare("SELECT pedidosrealizados.id as idpe, fecha, usuarios.nombre as nombreus
+        FROM $tabla  JOIN usuarios  ON pedidosrealizados.idcliente=usuarios.id  ORDER BY pedidosrealizados.id DESC limit ? offset ?");
     }
  
     $query->bind_param("ii",$limit,$offset);

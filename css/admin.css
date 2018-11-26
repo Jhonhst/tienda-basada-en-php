@@ -31,9 +31,43 @@
 
 /* posicion de la vista individual de cada pedido */
 #posicion-pedido{
-    position: fixed;
+    /* position: fixed; */
 }
 
 .traer-individual{
     cursor: pointer;
+}
+
+/* bordee */
+.bordee {
+    width: 100%; 
+    background-size: cover;
+    box-shadow:0 0  20px rgba(7,7,7,.7);    
+}
+
+/* footer */
+.footer{
+    height: 50px;
+    background-color: black;
+}
+
+/* mensaje del footer */
+.mensaje{
+    font-size: 1.4rem;
+    color: white;
+}
+
+/* boton para pasar de pedidos pendientes a realizados */
+.boton-enviar{
+    display: none;
+}
+
+.navbar-bg{
+    background-color: brown;
+}
+
+/* letra */
+.letra{
+    font-family: 'Oleo Script', cursive;
+    font-size: 1.5rem;
 }

@@ -33,10 +33,10 @@ if (isset($_FILES["file"]))
         $result = mysqli_query($con, $query);
                   
             if($query){
-                $json = "Se guardo correctamente";
+                $json = "Se ha guardado correctamente";
             }
             else {
-                $json = "Ocurrio un error";
+                $json = "Ocurrió un error";
             }
             echo json_encode($json); 
     }

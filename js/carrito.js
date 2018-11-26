@@ -77,8 +77,8 @@ $(function(){
           if(id == 0){   
             modulo += `
               <tr >
-                <td class="text-center" colspan="4">
-                  Aún no se ha añadido algún producto al carrito!
+                <td class="text-center resumen-vacio" colspan="4">
+                  ¡Aún no se ha añadido algún producto al carrito!
                 </td>
               </tr>
             ` 
@@ -86,18 +86,18 @@ $(function(){
             total_articulos += 1;  
             modulo += `
               <tr elId="${id}">
-                <td class="text-center" >
+                <td class="text-center d-none d-md-block" >
                   <i class="fas fa-minus-square menos menoscss"></i>
                   <input type="text" class="col-8" elId="${id}" deposito="${depositos}" id="numero${id}" value="${cantidad}" 
                   readonly>
                   <i class="fas fa-plus-square mas mascss"></i>
-                  <p id="${id}">${depositos}</p>
+                 
                 </td>
                 <td> ${nombre} </td>
                 <td> ${precio} </td>
                 <td> ${total} </td>
-                <td> 
-                  <button elId="${id}" class="eliminar-del-carrito btn btn-danger">Eliminar</button>
+                <td class="d-none d-md-block"> 
+                  <button elId="${id}" class="eliminar-del-carrito btn btn-danger ">Eliminar</button>
                 </td>
               </tr>
             ` 
@@ -106,35 +106,41 @@ $(function(){
           if(id == 0){   
             modulo_dos += `
               <tr >
-                <td class="text-center" colspan="4">
-                  Aún no se ha añadido algún producto al carrito!
+                <td class="text-center resumen-vacio" colspan="4">
+                  ¡Aún no se ha añadido algún producto al carrito!
+                  <i class="fas fa-cart-arrow-down carrito">
                 </td>
               </tr>
             ` 
           }else { 
             total_articulos_dos += 1;  
             modulo_dos += `
+          <div class="row bordee">
             <div class="col-12">
-              <p>${nombre}</p>
+              <p class="titulo-carrito">${nombre}</p>
             </div>
-            <div class="col-3 ">
+            <div class="col-6 col-md-3 ">
               <img src="img/${urlimg}" class="img-fluid" alt="">
             </div>
-            <div elId="${id}" class="col-3">
+            <div elId="${id}" class="col-6 col-md-3 ">
               <i class="fas fa-minus-square menos menoscss"></i>
               <input type="text" class="col-8" elId="${id}" deposito="${depositos}" id="numero${id}" value="${cantidad}" readonly>
               <i class="fas fa-plus-square mas mascss"></i>
-              <p id="${id}">${depositos}</p>
+              <p></p>
             </div>
-            <div class="col-3" >
+            <div class="col-6 col-md-3" >
               <p>Precio</p> <p>$ ${precio}</p>
             </div>
-            <div class="col-3">
-              <p>$ sub total <br>$ ${total}</p>
+            <div class="col-6 col-md-3">
+              <p>$ sub-total <br>$ ${total}</p>
             </div>
-            <div class="col-2"> 
-              <button elId="${id}" class="eliminar-del-carrito btn btn-danger"> Eliminar </button>
+            <div class="col-12"> 
+              <button elId="${id}" class="eliminar-del-carrito eliminar-del-carrito-style btn btn-danger"> Eliminar </button>
             </div>
+          </div>
+          
+           
+            <hr>
             ` 
           }   
           
@@ -142,24 +148,18 @@ $(function(){
             resumen += `
               <tr >
                 <td class="text-center" colspan="4">
-                  Aún no se ha añadido algún producto al carrito!
+                  ¡Aún no se ha añadido algún producto al carrito!
                 </td>
               </tr>
             ` 
           }else { 
             resumen += `
-            <div class="col-3">
-              <p>${nombre}</p>
-            </div>
-            <div  class="col-3">
-              <p>${cantidad}</p>
-            </div>
-            <div class="col-3" >
-              <p>Precio</p> <p>$ ${precio}</p>
-            </div>
-            <div class="col-3">
-              <p>$ sub total <br>$ ${total}</p>
-            </div>
+            <tr>
+              <th class="text-center">${cantidad}</th>
+              <td>${nombre}</td>
+              <td>${precio}</td>
+              <td>${total}</td>
+            </tr>        
             ` 
           }
         });
@@ -179,29 +179,7 @@ $(function(){
     finalizarCompra();//para que salga el boton de finalizar pedido solo cuando hay articulos en el carrito
   } 
   // fin de la función que mostrara los articulos en el carrito y los mantendra actualizado sin recargar
- 
-    //inicio de la función para eliminar la cookie del usuario
-  $('#cerrar-sesion').click(function(){     
-    if(window.confirm("desea salir del sitio "))
-    {
-      const postData = {
-        borrar: $('#borrar').val()
-      };
-        
-      const url = 'procesos/cookie.php';
-    // console.log(postData, url);
-    
-      $.post(url, postData,function(response){
-        // console.log(response)  
-        window.location="index.php";
-      });
-    }
-     else
-    {
-      alert("No hay problema");
-    }
-  });
-    //fin de la función para eliminar la cookie del usuario
+
     
     // inicio de la función para eliminar articulos del carrito
   $(document).on('click', '.eliminar-del-carrito', function() {
@@ -235,7 +213,7 @@ $(function(){
       // console.log(suma);          
       if(this.suma > this.deposito){
         this.suma = this.deposito;
-        alert('no te pases wuey ya no hay mas');
+        alert('Se ha alcanzado el limite de este producto');
       }
       this.postData = {
         id: this.id,
@@ -251,7 +229,7 @@ $(function(){
       // console.log(suma);          
       if(this.resta < 1){
         this.resta = 1;
-        alert('eso es lo minimo');
+        alert('La cantidad no puede ser menor a uno');
       }
       this.postData = {
         id: this.id,
@@ -273,7 +251,7 @@ $(function(){
   // función que resta articulos del carrito usando objeto
   $(document).on('click', '.menos', function(e) {
 
-    let elemento = $('.menos').siblings()[0];
+    let elemento = $(this).siblings()[0];
     // console.log(elemento);
     let restar = new SumaResta(elemento);
     restar.resta();
@@ -283,7 +261,7 @@ $(function(){
     // función que suma articulos del carrito usando objeto
   $(document).on('click', '.mas', function(e) {
     
-    let elemento = $('.mas').siblings()[1];
+    let elemento = $(this).siblings()[1];
     var sumar = new SumaResta(elemento);
     sumar.suma(); 
     e.preventDefault();     
@@ -305,7 +283,7 @@ $(function(){
 
     if(suma > depositos){
       $('#cantidad').val(depositos); 
-      alert('no te pases wuey ya no hay mas');
+      alert('Se ha alcanzado el limite de este producto');
     }
   });
     // fin de la función encargada de sumar los articulos en la parte de articulo.php 
@@ -322,7 +300,7 @@ $(function(){
 
     if(menos < 1){
       $('#cantidad').val(1); 
-      alert('no se permite menos cantidad');
+      alert('La cantidad no puede ser menor a uno');
     }
   });
     // fin de la función encargada de restar los articulos en la parte de articulo.php 
@@ -338,27 +316,27 @@ $(function(){
   //inicio  función encargada de que no baje de 1 la cantidad y no se sobrepase de la cantidad que hay en deposito
   var cantidad = $('.cantidad-llevar').val();
     
-  $('#menos').click(function(){
-    cantidad = parseInt(cantidad)
-    cantidad -= 1;
-    if(cantidad < 1){
-      cantidad = 1;
-      $('.cantidad-llevar').val(cantidad);
-    }
-    $('.cantidad-llevar').val(cantidad);
-  })
+  // $('#menos').click(function(){
+  //   cantidad = parseInt(cantidad)
+  //   cantidad -= 1;
+  //   if(cantidad < 1){
+  //     cantidad = 1;
+  //     $('.cantidad-llevar').val(cantidad);
+  //   }
+  //   $('.cantidad-llevar').val(cantidad);
+  // })
 
-  $('#mas').click(function(){
-    cantidad = parseInt(cantidad)
-    cantidad += 1;
-    if(cantidad > deposito){
-      cantidad = deposito;
-      $('.cantidad-llevar').val(cantidad);
-      alert('no te pases wuey ya no hay mas');
-    }
-    $('.cantidad-llevar').val(cantidad);
-    // console.log(cantidad);
-  })
+  // $('#mas').click(function(){
+  //   cantidad = parseInt(cantidad)
+  //   cantidad += 1;
+  //   if(cantidad > deposito){
+  //     cantidad = deposito;
+  //     $('.cantidad-llevar').val(cantidad);
+  //     alert('no te pases wuey ya no hay mas');
+  //   }
+  //   $('.cantidad-llevar').val(cantidad);
+  //   // console.log(cantidad);
+  // })
   //inicio  función encargada de que no baje de 1 la cantidad y no se sobrepase de la cantidad que hay en deposito
 
 
@@ -384,13 +362,58 @@ $(function(){
   //   e.preventDefault();
   // });
     $("#enviar-pedido").click(function(e){
+      // validaciones
+      e.preventDefault();
+      var nombre = $('#nombre').val();
+      var cc = $('#cc').val();
+      var ciudad = $('#ciudad').val();
+      var email = $('#email').val();    
+      var apellidos = $('#apellidos').val();
+      var direccion = $('#direccion').val();
+      var pais = $('#pais').val();
+      var telefono = $('#telefono').val();
+      var servi = $('#servi').val();
+      var inter = $('#inter').val();
+
+      var opciones = document.getElementsByName("envio");//para validar los radio y luego se pregunta en los if si se selecciono alguno
+      var seleccionado = false;
+      for(var i=0; i<opciones.length; i++) {    
+        if(opciones[i].checked) {
+          seleccionado = true;
+          break;
+        }
+      }
+
+      var opciones_dos = document.getElementsByName("pago");//para validar los radio y luego se pregunta en los if si se selecciono alguno
+      var seleccionado_dos = false;
+      for(var i=0; i<opciones_dos.length; i++) {    
+        if(opciones_dos[i].checked) {
+          seleccionado_dos = true;
+          break;
+        }
+      }
+
+      if(nombre == '' || cc == '' || ciudad == '' || email == '' || apellidos == '' || direccion == '' || pais == '' || telefono == ''){
+        alert('Todos los datos deben estar completos');   
+      }else if(isNaN(cc)){
+        alert('C.C solo acepta números')
+      }else if(isNaN(telefono)){
+        alert('Teléfono solo acepta números')
+      }else if(!seleccionado){
+        alert('Se debe seleccionar un método de envío')
+      }else if(!seleccionado_dos){
+        alert('Se debe seleccionar un método de pago')
+      }   
+      else{//una ves todo este bien
+        var formulario = $("#pedido").serializeArray();
+        $.post('pedidos/guardar-pedido.php', formulario, function (respuesta) {
+          alert('Se ha guardado correctamente');
+          mensajeCuenta(respuesta);
+        });
+        e.preventDefault();
+      }
  
-    var formulario = $("#pedido").serializeArray();
-    $.post('pedidos/guardar-pedido.php', formulario, function (respuesta) {
-      alert('Se guardo correctamente');
-      mensajeCuenta(respuesta);
-    });
-    e.preventDefault();
+   
   });
    //fin de  guardar los datos del pedido
 
@@ -400,7 +423,7 @@ $(function(){
     $('#mensaje-cuenta').removeClass('d-none');
     // console.log(cuenta);
     switch (cuenta) {
-      case 'Transferencia Electronica Davivienda':
+      case 'Transferencia Electrónica Davivienda':
         $('#davivienda').removeClass('d-none');
         break;
       case 'Transferencia Electronica Bancolombia':
@@ -430,32 +453,12 @@ $(function(){
 
     // inicio de la función encargada de decirle al usuario que se debe logear para procesar la compra
     $('#procesar-compra').click(function(){
-      alert('se debe iniciar sesión para procesar la compra');
+      alert('Se debe iniciar sesión para procesar la compra');
       window.location="ingresar.php";
     });
     // fin de la función encargada de decirle al usuario que se debe logear para procesar la compra
 
-    //inicio de iniciar sesión y que sea reenviado a la ultima pagina visitada y que esta ya este acualizada con las cookies para que se vean el nombre del usuario
-    $(document).on('click', '#ingresar-sesion', function(e) {
 
-      var formulario = $("#form-ingresar").serializeArray();
-  
-      const postData = formulario;
-      // console.log(postData);
-      $.post('procesos/iniciar-sesion.php', postData , function(response) {
-        // alert(response);
-        retroceder();
-        
-      });
-      e.preventDefault(); 
-      
-    });
-    
-    function retroceder(){
-      window.history.back(1);
-    }
-    
-     //fin de iniciar sesión y que sea reenviado a la ultima pagina visitada y que esta ya este acualizada con las cookies para que se vean el nombre del usuario
    
   
      // inicio de la función  funcion encargada mostrar el boton de finalizar pedido solo cuando hay articulos en el carrito
@@ -467,8 +470,31 @@ $(function(){
   // inicio de la función  funcion encargada mostrar el boton de finalizar pedido solo cuando hay articulos en el carrito
     
   // boton para retroceder en caso de que se quiera modificar el resumen del pedido
-  $('#retroceder-moficar').click(function(){
-    retroceder();
+  $('#retroceder-moficar').click(function(){ 
+    window.history.back(1);
   })
-});
 
+
+  // Si el usuario ya tiene datos guardados saldran por defecto
+  Datos_usuario();
+  function Datos_usuario() {
+      $.ajax({
+        url: 'usuario/procesos/traer.php',
+        type: 'GET',
+          success: function (respuesta) { 
+              let datos = JSON.parse(respuesta);  
+              datos.forEach(dato => {             
+                  $('#nombre').val(dato.nombre);
+                  $('#cc').val(dato.cc);
+                  $('#ciudad').val(dato.ciudad);
+                  $('#email').val(dato.email);
+                
+                  $('#apellidos').val(dato.apellidos);
+                  $('#direccion').val(dato.direccion);
+                  $('#pais').val(dato.pais);
+                  $('#telefono').val(dato.telefono);
+              })
+          } 
+      })
+  }
+});

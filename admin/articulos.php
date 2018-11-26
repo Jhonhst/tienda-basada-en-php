@@ -1,16 +1,17 @@
 <?php
     include('cabecera.php');
 ?>
+<?php if(isset($_COOKIE['admin'])): ?>
 <!-- desplegable agregar o modificar -->
 <div class="container">
-    <button class="btn btn-primary mt-3 mb-2 agregar">Agregar nuevo articulos</button>
+    <button class="btn btn-primary mt-3 mb-2 agregar">Agregar nuevo artículo</button>
     <!-- <div class="row"> -->
         <form id="form-articulos"  enctype="multipart/form-data"> 
             <div class="form-group col-12 ">
                 <label for="nombre">Nombre</label>
                 <input type="text" name="nombre" class="form-control" id="nombre-articulo"  placeholder="">
      
-                <label for="descripcion">descripción</label>
+                <label for="descripcion">Descripción</label>
                 <input type="text" name="descripcion" class="form-control" id="descripcion-articulo" placeholder="">
 
                 <label for="marca">Marca</label>
@@ -67,46 +68,17 @@
 </div>
 
     <!--inicio de botones paginador-->
-    <nav >
+    <nav class="mt-4">
         <ul class="pagination justify-content-center"  id="paginador">
 
         </ul>
     </nav>
       <!-- fin de botones -->
 
- 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 <?php
 include('footer.php');
 ?>
     <script src="../js/admin-articulos.js"></script> 
+    <?php endif ?>

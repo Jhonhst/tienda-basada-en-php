@@ -6,7 +6,7 @@ $(function(){
             // se genera el paginador
              paginador = $(".pagination");
 	    // cantidad de items por pagina
-	        var items = 2, numeros =4;	
+	        var items = 12, numeros =4;	
 	    // inicia el paginador
 	        init_paginator(paginador,items,numeros);
 	        // se envia la peticion ajax que se realizara como callback
@@ -38,11 +38,11 @@ $(function(){
                 var modulo = '';
                 $.each(lista, function(ind, elem){			
                     modulo +=`
-                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" >  
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3 bordee" >  
                         <img src="../img/${elem.urlimg}" class="img-fluid" alt="">
                         <p>${elem.nombre}</p>
                         <button elId="${elem.id}"  class="btn btn-success     modificar-articulo">Modificar</button>
-                        <button elId="${elem.id}" class="btn btn-danger eliminar-articulo"     >Eliminar</button>
+                        <button elId="${elem.id}" class="btn btn-danger eliminar-articulo mb-2">Eliminar</button>
                     </div>
             
                     `	
@@ -50,7 +50,7 @@ $(function(){
                 $('#cuadros').html(modulo);
 
             }).fail(function(jqXHR,textStatus,textError){
-		    console.log("Error al realizar la peticion dame".textError);
+		    console.log("Error al realizar la petición dame".textError);
 	        });
         }
     }
@@ -86,32 +86,55 @@ $(function(){
 
       //guardar articulos
     $("#guardar-articulo").click(function(e){
-        var formData = new FormData($("#form-articulos")[0]);
-        var ruta = "procesos-admin/guardar.php";
-        $("#guardar-articulo").html('Espere...')//el boton
-        $.ajax({
-            url: ruta,
-            type: "POST",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(respuesta)
-            {
-                alert(respuesta);
-                var categoria = $('#titulo-categoria').html();
-                if(categoria == 'Todos'){
-                    traerDatos();
-                }else{
-                    traerDatos(categoria);
-                }
-
-                $('#form-articulos').slideUp(300);
-                agregar = true
-            }
-        });
-        $("#guardar-articulo").html('Guardar');//el boton
         e.preventDefault();
+        var nombre = $('#nombre-articulo').val();
+        var descripcion = $('#descripcion-articulo').val();
+        var marca = $('#marca-articulo').val();
+        var categoria = $('#categoria-articulo').val();
+        var precio = $('#precio-articulo').val();
+        var cantidad = $('#cantidad-articulo').val();
+        var urlimg = $('#nombre-urlimg').val();
+
+        if(nombre == '' || descripcion == '' || marca == '' || categoria == '' || precio == '' || cantidad == '' || urlimg == ''){
+           alert('Todos los campos deben estar completos')
+        }else if(categoria == 'Categorías'){
+            alert('Debe seleccionar una categoría');
+        }else if(isNaN(precio)){
+            alert('El precio no es correcto')
+        }else if(isNaN(cantidad)){
+            alert('La cantidad no es correcta')
+        }
+        else{
+            var formData = new FormData($("#form-articulos")[0]);
+            var ruta = "procesos-admin/guardar.php";
+            $("#guardar-articulo").html('Espere...')//el boton
+            $.ajax({
+                url: ruta,
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(respuesta)
+                {
+                    alert(respuesta);
+                    var categoria = $('#titulo-categoria').html();
+                    if(categoria == 'Todos'){
+                        traerDatos();
+                    }else{
+                        traerDatos(categoria);
+                    }
+
+                    $('#form-articulos').slideUp(300);
+                    agregar = true
+                }
+            });
+            $("#guardar-articulo").html('Guardar');//el boton
+            e.preventDefault();
   
+        }
+
+
+        
     });
  
 
@@ -178,29 +201,48 @@ $(function(){
     //modificación
     $('#guardar-modificacion').click(function(e){
         e.preventDefault();
-        var formData = new FormData($("#form-articulos")[0]);
-        var ruta = "procesos-admin/guardar-modificacion.php";
-        $("#guardar-modificacion").html('Espere...')//el boton
-        $.ajax({
-            url: ruta,
-            type: "POST",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(respuesta)
-            {
-                alert(respuesta);
-                var categoria = $('#titulo-categoria').html();
-                if(categoria == 'Todos'){
-                    traerDatos();
-                }else{
-                    traerDatos(categoria);
+        var nombre = $('#nombre-articulo').val();
+        var descripcion = $('#descripcion-articulo').val();
+        var marca = $('#marca-articulo').val();
+        var categoria = $('#categoria-articulo').val();
+        var precio = $('#precio-articulo').val();
+        var cantidad = $('#cantidad-articulo').val();
+        var urlimg = $('#nombre-urlimg').val();
+
+        if(nombre == '' || descripcion == '' || marca == '' || categoria == '' || precio == '' || cantidad == '' ){
+           alert('Todos los campos deben estar completos')
+        }else if(categoria == 'Categorías'){
+            alert('Debe seleccionar una categoría');
+        }else if(isNaN(precio)){
+            alert('El precio no es correcto')
+        }else if(isNaN(cantidad)){
+            alert('La cantidad no es correcta')
+        }else{
+            var formData = new FormData($("#form-articulos")[0]);
+            var ruta = "procesos-admin/guardar-modificacion.php";
+            $("#guardar-modificacion").html('Espere...')//el boton
+            $.ajax({
+                url: ruta,
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(respuesta)
+                {
+                    alert(respuesta);
+                    var categoria = $('#titulo-categoria').html();
+                    if(categoria == 'Todos'){
+                        traerDatos();
+                    }else{
+                        traerDatos(categoria);
+                    }
+                    $('#form-articulos').slideUp(300);
+                    agregar = true
                 }
-                $('#form-articulos').slideUp(300);
-                agregar = true
-            }
-        });
-        $("#guardar-modificacion").html('Guardar modificación');//el boton
+            });
+            $("#guardar-modificacion").html('Guardar modificación');//el boton
+        }
+        
       
     })
 

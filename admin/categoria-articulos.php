@@ -1,3 +1,8 @@
+
+<!-- esta pagina no la uso -->
+<!-- esta pagina no la uso -->
+<!-- esta pagina no la uso -->
+<!-- esta pagina no la uso -->
 <?php
     include('cabecera.php');
     if($_GET['categoria']){
@@ -53,7 +58,7 @@
 <div class="container">
     <div class=""> 
         <p class="text-center">
-            <a id="todo" href="index1.php">Todos</a>
+            <a id="todo" href="index.php">Todos</a>
             <a class="categoria" href="categoria-articulos.php?categoria=relojes">Relojes</a>
             <a class="categoria" href="categoria-articulos.php?categoria=billeteras">Billeteras</a>
             <a class="categoria" href="categoria-articulos.php?categoria=gorras">Gorras</a>
